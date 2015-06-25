@@ -8,31 +8,34 @@ define(function() {
   };
 
   // instant methods
-  Vector.prototype.add = function(v) {
-    this.x += v.x;
-    this.y += v.y;
-    return this;
+
+  // length
+  Vector.prototype.magnitude = function() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
   };
-  Vector.prototype.subtract = function(v) {
-    this.x -= v.x;
-    this.y -= v.y;
-    return this;
-  };
-  Vector.prototype.multiply = function(k) {
-    this.x *= k;
-    this.y *= k;
-    return this;
+  // square of length
+  Vector.prototype.sqrMagnitude = function() {
+    return this.x * this.x + this.y * this.y;
   };
 
-  // static methods
-  Vector.add = function(u, v) {
-    return new Vector(u.x + v.x, u.y + v.y);
+  Vector.prototype.add = function(v) {
+    return new Vector(this.x + v.x, this.y + v.y);
   };
-  Vector.subtract = function(u, v) {
-    return new Vector(u.x - v.x, u.y - v.y);
+  Vector.prototype.subtract = function(v) {
+    return new Vector(this.x - v.x, this.y - v.y);
   };
-  Vector.multiply = function(u, k) {
-    return new Vector(u.x * k, u.y * k);
+  Vector.prototype.multiply = function(k) {
+    return new Vector(this.x * k, this.y * k);
   };
+
+  // inner product
+  Vector.dot = function(u, v) {
+    return u.x * v.x + u.y * v.y;
+  };
+  // outer product
+  Vector.cross = function(u, v) {
+    return u.x * v.y - u.y * v.x;
+  };
+
   return Vector;
 });
