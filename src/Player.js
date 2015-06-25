@@ -19,7 +19,9 @@ define(['src/Vector', 'src/scene'], function(Vector, scene) {
 
   Player.prototype.updatePosition = function(timeDelta) {
     this.position.add(Vector.multiply(this.velocity, timeDelta));
+
     if (this.position.y < this.node.height()) {
+      // collide with ground!! (for debug)
       this.position.y = this.node.height();
       this.velocity = new Vector();
     }
