@@ -10,7 +10,7 @@
 
 require(['src/keyinput', 'src/Player'], function(input, Player) {
   var previousTime = new Date().getTime();
-  var p = new Player();
+  var player = new Player();
 
   // main loop
   (function loop() {
@@ -19,11 +19,13 @@ require(['src/keyinput', 'src/Player'], function(input, Player) {
     var timeDelta = (currentTime - previousTime) / 1000;
     previousTime = currentTime;
 
-    p.update(timeDelta);
+    player.update(timeDelta);
     if (input.getLeftKeyDown()) {
+      player.flapLeft();
       console.log("left");
     }
     if (input.getRightKeyDown()) {
+      player.flapRight();
       console.log("right");
     }
 
