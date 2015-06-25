@@ -8,9 +8,10 @@
 })();
 
 
-require(['src/keyinput', 'src/Player'], function(input, Player) {
+require(['src/keyinput', 'src/Player', 'src/Colliders'], function(input, Player, Colliders) {
   var previousTime = new Date().getTime();
-  var player = new Player();
+  var colliders = new Colliders();
+  var player = new Player(colliders.colliders);
 
   // main loop
   (function loop() {
@@ -22,11 +23,9 @@ require(['src/keyinput', 'src/Player'], function(input, Player) {
     player.update(timeDelta);
     if (input.getLeftKeyDown()) {
       player.flapLeft();
-      console.log("left");
     }
     if (input.getRightKeyDown()) {
       player.flapRight();
-      console.log("right");
     }
 
   })();
