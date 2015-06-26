@@ -39,8 +39,6 @@
 .pipe {
     position: absolute;
     z-index: 1;
-    /* width: 320px; */
-    /* height: 52px; */
 }
 
 .goal {
@@ -48,6 +46,14 @@
     z-index: 1;
 }
 
+#time {
+    position: absolute;
+    top: 460px;
+    left: 10px;
+    z-index: 3;
+    font-size: 24px;
+    color: brown;
+}
 
 #blinder-top {
     position: absolute;

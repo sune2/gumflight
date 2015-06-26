@@ -77,5 +77,9 @@ define(['src/Vector', 'src/Segment', 'src/camera'], function(Vector, Segment, ca
     this.node.attr('class', 'player-left');
   };
 
+  Player.prototype.isPlaying = function() {
+    return !(this.isDead || this.isCleared);
+  };
+
   return Player;
 });

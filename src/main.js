@@ -9,8 +9,8 @@
 
 
 require(
-  ['src/keyinput', 'src/camera', 'src/Player', 'src/PipeManager', 'src/Goal', 'src/Collision'],
-  function(input, camera, Player, PipeManager, Goal, Collision) {
+  ['src/keyinput', 'src/TimeManager', 'src/camera', 'src/Player', 'src/PipeManager', 'src/Goal', 'src/Collision'],
+  function(input, TimeManager, camera, Player, PipeManager, Goal, Collision) {
     // preload images
     $("<img>").attr("src", "img/puyo_right.png");
     $("<img>").attr("src", "img/puyo_left.png");
@@ -36,6 +36,14 @@ require(
     var goal = new Goal(goalY);
     var collision = new Collision(pipeManager, goal);
     var player = new Player(collision);
+    var timeManager = new TimeManager();
+
+    var started = false;
+
+    var startGame = function() {
+      started = true;
+      timeManager.start();
+    };
 
     // main loop
     var previousTime = new Date().getTime();
@@ -49,13 +57,23 @@ require(
       pipeManager.update(timeDelta);
       goal.update(timeDelta);
 
+      if (player.isPlaying()) {
+        timeManager.update();
+      }
+
       camera.offsetY = Math.max(camera.offsetY, player.position.y-200);
       camera.offsetY = Math.min(camera.offsetY, goalY - 100);
 
       if (input.getLeftKeyDown()) {
+        if (!started) {
+          startGame();
+        }
         player.flapLeft();
       }
       if (input.getRightKeyDown()) {
+        if (!started) {
+          startGame();
+        }
         player.flapRight();
       }
 
