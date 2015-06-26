@@ -1,4 +1,4 @@
-define(['src/Vector', 'src/scene', 'src/Collision'], function(Vector, scene, Collision) {
+define(['src/Vector', 'src/camera', 'src/Collision'], function(Vector, camera, Collision) {
   var Player = function(colliders) {
     this.node = $('#player');
     this.position = new Vector();
@@ -7,7 +7,8 @@ define(['src/Vector', 'src/scene', 'src/Collision'], function(Vector, scene, Col
   };
 
   Player.prototype.setPos = function(p) {
-    this.node.css({left: p.x, top: scene.height - p.y});
+    var screenPos = camera.worldToScreen(p);
+    this.node.css({left: screenPos.x, top: screenPos.y});
   };
 
   Player.prototype.updateVelocity = function(timeDelta) {
@@ -17,9 +18,9 @@ define(['src/Vector', 'src/scene', 'src/Collision'], function(Vector, scene, Col
   Player.prototype.updatePosition = function(timeDelta) {
     var nextPos = this.position.add(this.velocity.multiply(timeDelta));
 
-    if (nextPos.y < this.node.height()) {
+    if (nextPos.y - camera.offsetY < this.node.height()) {
       // collide with ground!! (for debug)
-      nextPos.y = this.node.height();
+      nextPos.y = this.node.height() + camera.offsetY;
       this.velocity = new Vector();
     }
 
@@ -36,6 +37,8 @@ define(['src/Vector', 'src/scene', 'src/Collision'], function(Vector, scene, Col
   Player.prototype.update = function(timeDelta) {
     this.updateVelocity(timeDelta);
     this.updatePosition(timeDelta);
+
+    camera.offsetY = Math.max(camera.offsetY, this.position.y-200);
   };
 
   Player.prototype.checkColliders = function() {
