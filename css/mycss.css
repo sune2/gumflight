@@ -2,7 +2,14 @@
     width: 500px;
     height: 500px;
     background-color: #DDD;
+    position: absolute;
 }
 #player {
-    position: relative;
+    position: absolute;
+}
+
+.pipe {
+    position: absolute;
+    /* width: 320px; */
+    /* height: 52px; */
 }

@@ -1,15 +1,13 @@
-
-define(['src/Segment', 'src/Vector'], function(Segment, Vector) {
+define(['src/Segment', 'src/Vector', 'src/Pipe'], function(Segment, Vector, Pipe) {
   var Colliders = function() {
-    this.colliders = [new Segment(new Vector(0,200), new Vector(300, 200))];
-    // var context = $('#game-area')[0].getContext('2d');
-    // console.log(context);
-    // context.beginPath();
-    // context.moveTo(0, 500-200);
-    // context.lineTo(300, 500-200);
-    // context.lineTo(400, 500-100);
-    // context.closePath();
-    // context.stroke();
+    var pipes = [new Pipe(200, 0),
+                 new Pipe(400, 1)
+                ];
+    var colliders = [];
+    for (var i = 0; i < pipes.length; ++i) {
+      colliders.push.apply(colliders, pipes[i].getColliders());
+    }
+    this.colliders = colliders;
   };
 
   return Colliders;

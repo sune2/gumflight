@@ -11,12 +11,12 @@ define(function() {
   document.onkeydown = function(ev) {
     var eve = ev ? ev : window.event;
     updateKeyState(eve.keyCode,true);
-    return false;
+    return true;
   };
   document.onkeyup = function(ev){
     var eve = ev ? ev : window.event;
     updateKeyState(eve.keyCode,false);
-    return false;
+    return true;
   };
   var LEFT_KEY = 37;
   var RIGHT_KEY = 39;
