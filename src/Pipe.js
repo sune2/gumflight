@@ -20,9 +20,9 @@ define(['src/Segment', 'src/Vector', 'src/camera'], function(Segment, Vector, ca
   Pipe.prototype.getColliders = function() {
     var pos = this.position;
     var p1 = new Vector(pos.x, pos.y);
-    var p2 = new Vector(pos.x + w, pos.y);
+    var p2 = new Vector(pos.x, pos.y - h);
     var p3 = new Vector(pos.x + w, pos.y - h);
-    var p4 = new Vector(pos.x, pos.y - h);
+    var p4 = new Vector(pos.x + w, pos.y);
     return [new Segment(p1, p2),
             new Segment(p2, p3),
             new Segment(p3, p4),

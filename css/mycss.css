@@ -43,11 +43,16 @@
     /* height: 52px; */
 }
 
+.goal {
+    position: absolute;
+    z-index: 1;
+}
+
 
 #blinder-top {
     position: absolute;
     top: -100px;
-    width: 5
+    width: 500px;
     height: 100px;
     background-color: #fff;
     z-index: 2;

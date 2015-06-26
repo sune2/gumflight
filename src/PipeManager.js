@@ -1,16 +1,6 @@
 define(['src/camera', 'src/Pipe'], function(camera, Pipe) {
-  var PipeManager = function() {
-    this.pipeArgList = [
-      [300,0],
-      [600,1],
-      [900,0],
-      [1100,1],
-      [1300,0],
-      [1700,1],
-      [2100,0],
-      [2250,1],
-      [2400,0]
-    ];
+  var PipeManager = function(pipeArgList) {
+    this.pipeArgList = pipeArgList;
     this.pipes = [];
     this.checkNewPipe();
   };
