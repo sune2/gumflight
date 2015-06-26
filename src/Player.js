@@ -1,6 +1,6 @@
 define(['src/Vector', 'src/Segment', 'src/camera'], function(Vector, Segment, camera) {
   var Player = function(collision) {
-    this.node = $('#player');
+    this.node = $('<div id="player" class="player-right">').appendTo($('#game-area'));
     this.position = new Vector(camera.width/2);
     this.velocity = new Vector();
     this.collision = collision;
@@ -8,11 +8,6 @@ define(['src/Vector', 'src/Segment', 'src/camera'], function(Vector, Segment, ca
     this.height = this.node.height();
     this.isDead = false;
     this.isCleared = false;
-    // preload images
-    $("<img>").attr("src", "img/puyo_right.png");
-    $("<img>").attr("src", "img/puyo_left.png");
-    $("<img>").attr("src", "img/puyo_right_dead.png");
-    $("<img>").attr("src", "img/puyo_left_dead.png");
   };
 
   Player.prototype.setPos = function(p) {

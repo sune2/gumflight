@@ -11,6 +11,14 @@
 require(
   ['src/keyinput', 'src/camera', 'src/Player', 'src/PipeManager', 'src/Goal', 'src/Collision'],
   function(input, camera, Player, PipeManager, Goal, Collision) {
+    // preload images
+    $("<img>").attr("src", "img/puyo_right.png");
+    $("<img>").attr("src", "img/puyo_left.png");
+    $("<img>").attr("src", "img/puyo_right_dead.png");
+    $("<img>").attr("src", "img/puyo_left_dead.png");
+    $("<img>").attr("src", "img/pipe_right.png");
+    $("<img>").attr("src", "img/pipe_left.png");
+
     var pipeArgList = [
       [300,0],
       [600,1],
