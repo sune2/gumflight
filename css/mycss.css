@@ -1,14 +1,23 @@
+#game-all {
+    width: 500px;
+    background-color: #0f0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+}
 #game-area {
     width: 500px;
     height: 500px;
     background-color: #DDD;
-    position: absolute;
+    position: relative;
+    z-index: 0;
 }
 #player {
     position: absolute;
     width: 33px;
     height: 33px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .player-right {
@@ -29,6 +38,25 @@
 
 .pipe {
     position: absolute;
+    z-index: 1;
     /* width: 320px; */
     /* height: 52px; */
+}
+
+
+#blinder-top {
+    position: absolute;
+    top: -100px;
+    width: 5
+    height: 100px;
+    background-color: #fff;
+    z-index: 2;
+}
+
+#blinder-bottom {
+    position: relative;
+    width: 500px;
+    height: 100px;
+    background-color: #fff;
+    z-index: 2;
 }

@@ -18,7 +18,7 @@ define(['src/camera', 'src/Pipe'], function(camera, Pipe) {
     var firstPipe = this.pipes[0];
     var pos = firstPipe.position;
     if (pos.y < camera.offsetY) {
-      this.pipes.push(new Pipe(pos.y + 500, firstPipe.type));
+      this.pipes.push(new Pipe(pos.y + 500 + firstPipe.img.height(), firstPipe.type));
       firstPipe.remove();
       this.pipes.shift();
     }
