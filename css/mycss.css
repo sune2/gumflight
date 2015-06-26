@@ -65,9 +65,15 @@
 }
 
 #blinder-bottom {
-    position: relative;
+    position: absolute;
+    top: 500px;
     width: 500px;
     height: 100px;
     background-color: #fff;
     z-index: 2;
+}
+
+#explanation {
+    position: relative;
+    z-index: 3;
 }
