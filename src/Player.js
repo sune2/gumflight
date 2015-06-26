@@ -39,12 +39,13 @@ define(['src/Vector', 'src/Segment', 'src/camera'], function(Vector, Segment, ca
         this.isDead = true;
         this.node.attr('class', this.node.attr('class') + '-dead');
         console.log("collide!!!!");
-      } else if (this.collision.checkGoal(seg, this.height/2)) {
+      } else if (this.position.y > nextPos.y &&
+                 this.collision.checkGoal(seg, this.height/3)) {
         // goal
         this.isCleared = true;
         console.log("goal!!!!");
         // adjust position
-        nextPos = this.collision.getGoalPosition(seg, this.height/2);
+        nextPos = this.collision.getGoalPosition(seg, this.height/3);
       }
     }
 
