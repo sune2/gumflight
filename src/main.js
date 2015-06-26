@@ -41,12 +41,12 @@ require(
       var timeManager = new TimeManager();
 
       var started = false;
+      var cleared = false;
 
       var startGame = function() {
         started = true;
         timeManager.start();
       };
-
       // main loop
       var previousTime = new Date().getTime();
 
@@ -62,6 +62,10 @@ require(
 
         if (player.isPlaying()) {
           timeManager.update();
+        } else if (player.isCleared && !cleared) {
+          $('<div id="clear-text">').appendTo($('#game-area')).text('Cleared!!!!');
+          cleared = true;
+          timeManager.updateBestTime();
         }
 
         // camera offset
