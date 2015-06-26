@@ -6,12 +6,12 @@ define([], function() {
     this.bestTime = localStorage.getItem('bestTime') || 100;
     this.bestNode.text("Best : " + this.bestTime);
     this.record = undefined;
+    this.node.text("Time : 0");
   };
 
+
   TimeManager.prototype.update = function() {
-    if (this.startTime === undefined) {
-      this.node.text("Time : 0");
-    } else {
+    if (this.startTime !== undefined) {
       var cur = new Date().getTime();
       var t = (cur - this.startTime) / 1000;
       this.node.text("Time : " + t);
