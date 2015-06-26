@@ -11,5 +11,9 @@ define(['src/Vector'], function(Vector) {
     return new Vector(pos.x, this.height - (pos.y - this.offsetY));
   };
 
+  camera.init = function() {
+    this.offsetY = 0;
+  };
+
   return camera;
 });

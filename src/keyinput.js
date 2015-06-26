@@ -20,6 +20,7 @@ define(function() {
   };
   var LEFT_KEY = 37;
   var RIGHT_KEY = 39;
+  var SPACE_KEY = 32;
   return {
     getState: function(key) {
       return keyState[key];
@@ -40,6 +41,9 @@ define(function() {
     },
     getRightKeyDown: function() {
       return this.getKeyDown(RIGHT_KEY);
+    },
+    getSpaceKeyDown: function() {
+      return this.getKeyDown(SPACE_KEY);
     }
   };
 });
