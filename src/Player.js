@@ -1,9 +1,9 @@
-define(['src/Vector', 'src/camera', 'src/Collision'], function(Vector, camera, Collision) {
-  var Player = function(colliders) {
+define(['src/Vector', 'src/camera'], function(Vector, camera) {
+  var Player = function(collision) {
     this.node = $('#player');
     this.position = new Vector();
     this.velocity = new Vector();
-    this.collision = new Collision(colliders);
+    this.collision = collision;
   };
 
   Player.prototype.setPos = function(p) {
@@ -24,6 +24,7 @@ define(['src/Vector', 'src/camera', 'src/Collision'], function(Vector, camera, C
       this.velocity = new Vector();
     }
 
+    // collision with pipes
     if (this.collision.check(this.position, nextPos, 5)) {
       console.log("collide!!!!");
     }

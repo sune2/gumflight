@@ -8,10 +8,11 @@
 })();
 
 
-require(['src/keyinput', 'src/Player', 'src/PipeManager'], function(input, Player, PipeManager) {
+require(['src/keyinput', 'src/Player', 'src/PipeManager', 'src/Collision'], function(input, Player, PipeManager, Collision) {
   var previousTime = new Date().getTime();
   var pipeManager = new PipeManager();
-  var player = new Player(pipeManager.colliders);
+  var collision = new Collision(pipeManager);
+  var player = new Player(collision);
 
   // main loop
   (function loop() {

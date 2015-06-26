@@ -3,12 +3,7 @@ define(['src/camera', 'src/Pipe'], function(camera, Pipe) {
     var pipes = [new Pipe(200, 0),
                  new Pipe(400, 1)
                 ];
-    var colliders = [];
-    for (var i = 0; i < pipes.length; i++) {
-      colliders.push.apply(colliders, pipes[i].getColliders());
-    }
     this.pipes = pipes;
-    this.colliders = colliders;
   };
 
   PipeManager.prototype.update = function() {
@@ -27,6 +22,15 @@ define(['src/camera', 'src/Pipe'], function(camera, Pipe) {
       firstPipe.remove();
       this.pipes.shift();
     }
+  };
+
+  // maybe too slow
+  PipeManager.prototype.getColliders = function() {
+    var colliders = [];
+    for (var i = 0; i < this.pipes.length; i++) {
+      colliders.push.apply(colliders, this.pipes[i].getColliders());
+    }
+    return colliders;
   };
 
   return PipeManager;
