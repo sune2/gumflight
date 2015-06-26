@@ -58,13 +58,13 @@ define(['src/Vector', 'src/camera'], function(Vector, camera) {
 
   Player.prototype.flapRight = function() {
     if (this.isDead) return;
-    this.velocity = new Vector(100, 300);
+    this.velocity = new Vector(200, 350);
     this.node.attr('class', 'player-right');
   };
 
   Player.prototype.flapLeft = function() {
     if (this.isDead) return;
-    this.velocity = new Vector(-100, 300);
+    this.velocity = new Vector(-200, 350);
     this.node.attr('class', 'player-left');
   };
 

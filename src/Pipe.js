@@ -42,5 +42,8 @@ define(['src/Segment', 'src/Vector', 'src/camera'], function(Segment, Vector, ca
     this.img.remove();
   };
 
+  Pipe.width = w;
+  Pipe.height = h;
+
   return Pipe;
 });
