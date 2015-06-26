@@ -6,6 +6,25 @@
 }
 #player {
     position: absolute;
+    width: 33px;
+    height: 33px;
+    z-index: 1;
+}
+
+.player-right {
+    background-image: url("../img/puyo_right.png");
+}
+
+.player-left {
+    background-image: url("../img/puyo_left.png");
+}
+
+.player-right-dead {
+    background-image: url("../img/puyo_right_dead.png");
+}
+
+.player-left-dead {
+    background-image: url("../img/puyo_left_dead.png");
 }
 
 .pipe {
