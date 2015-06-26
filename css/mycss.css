@@ -1,6 +1,5 @@
 #game-all {
     width: 500px;
-    background-color: #0f0;
     position: absolute;
     left: 0;
     right: 0;
@@ -80,7 +79,6 @@
     top: -100px;
     width: 500px;
     height: 100px;
-    background-color: #fff;
     z-index: 2;
 }
 
@@ -89,7 +87,6 @@
     top: 500px;
     width: 500px;
     height: 100px;
-    background-color: #fff;
     z-index: 2;
 }
 
