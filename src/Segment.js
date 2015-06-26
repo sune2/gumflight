@@ -28,7 +28,7 @@ define(['src/Vector'], function(Vector) {
   };
 
   var intersectSP = function(s, p) {
-    var d1 = s.p1.subtract(p).magnitude + s.p2.subtract(p).magnitude();
+    var d1 = s.p1.subtract(p).magnitude() + s.p2.subtract(p).magnitude();
     var d2 = s.getV().magnitude();
     return d1 <= d2 + 1e-6;
   };
@@ -36,7 +36,7 @@ define(['src/Vector'], function(Vector) {
   var distanceSP = function(s, p) {
     var r = projection(s, p);
     if (intersectSP(s, r)) {
-      return r.subtract(s).magnitude();
+      return r.subtract(p).magnitude();
     }
     return Math.min(s.p1.subtract(p).magnitude(),
                     s.p2.subtract(p).magnitude());
@@ -49,6 +49,12 @@ define(['src/Vector'], function(Vector) {
     var m1 = Math.min(distanceSP(s1, s2.p1), distanceSP(s1, s2.p2));
     var m2 = Math.min(distanceSP(s2, s1.p1), distanceSP(s2, s1.p2));
     return Math.min(m1, m2);
+  };
+
+  Segment.crosspoint = function(s1, s2) {
+    var A = Vector.cross(s1.getV(), s2.getV());
+    var B = Vector.cross(s1.getV(), s1.p2.subtract(s2.p1));
+    return s2.p1.add(s2.getV().multiply(B/A));
   };
 
   return Segment;
