@@ -80,6 +80,7 @@
     width: 500px;
     height: 100px;
     z-index: 2;
+    background-color: white;
 }
 
 #blinder-bottom {
@@ -88,6 +89,7 @@
     width: 500px;
     height: 100px;
     z-index: 2;
+    background-color: white;
 }
 
 #explanation {
