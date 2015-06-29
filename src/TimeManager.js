@@ -3,7 +3,7 @@ define([], function() {
     this.node = $('<div id="time">').appendTo($('#game-area'));
     this.bestNode = $('<div id="best-time">').appendTo($('#game-area'));
     this.startTime = undefined;
-    this.bestTime = localStorage.getItem('bestTime') || 100;
+    this.bestTime = localStorage.getItem('bestTime') || "-----";
     this.bestNode.text("Best : " + this.bestTime);
     this.record = undefined;
     this.node.text("Time : 0");
@@ -24,7 +24,7 @@ define([], function() {
   };
 
   TimeManager.prototype.updateBestTime = function() {
-    if (this.record !== undefined && this.record < this.bestTime) {
+    if (this.record !== undefined && (this.bestTime === "-----" || this.record < this.bestTime)) {
       localStorage.setItem('bestTime', this.record);
       this.bestNode.text("Best : " + this.record).css('color', 'red');
     }
